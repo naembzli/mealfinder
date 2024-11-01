@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Meal Planner - MealFinder</title>
+    <!-- External CSS files for styling -->
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/planner.css">
+    <!-- Google Fonts for typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-brand">
+            <i class="fas fa-utensils"></i>
+            <span>MealFinder</span>
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-search"></i> Discover</a></li>
+            <li><a href="planner.html" class="active"><i class="fas fa-calendar-alt"></i> Meal Planner</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Main Planner Container -->
+        <div class="planner-container">
+            <!-- Header Section with Action Buttons -->
+            <div class="planner-header">
+                <div class="header-content">
+                    <h2><i class="fas fa-calendar-alt"></i> Weekly Meal Planner</h2>
+                    <p>Plan your meals for the week</p>
+                </div>
+                <!-- Action Buttons for Shopping List and Saved Meals -->
+                <div class="header-actions">
+                    <button onclick="generateShoppingList()" class="shopping-list-btn">
+                        <i class="fas fa-shopping-cart"></i> Generate Shopping List
+                    </button>
+                    <button onclick="readSavedMeals()" class="read-btn">
+                        <i class="fas fa-book-open"></i> Read Saved Meals
+                    </button>
+                </div>
+            </div>
+
+            <!-- Weekly Meal Planner Grid -->
+            <div class="week-grid" id="weeklyPlanner">
+                <!-- JavaScript will generate the weekly planner here -->
+            </div>
+        </div>
+
+        <!-- Modal for Displaying Saved Meals -->
+        <div id="savedMealsModal" class="modal">
+            <div class="modal-content saved-meals-modal">
+                <div class="modal-header">
+                    <h2><i class="fas fa-book-open"></i> Saved Meal Details</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div id="savedMealsContent" class="saved-content">
+                    <!-- JavaScript will populate saved meals here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for Displaying Shopping List -->
+        <div id="shoppingListModal" class="modal">
+            <div class="modal-content shopping-list-modal">
+                <div class="modal-header">
+                    <h2><i class="fas fa-shopping-cart"></i> Shopping List</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div id="shoppingListContent" class="shopping-list-content">
+                    <!-- JavaScript will populate shopping list here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript Files -->
+    <script src="../scripts/api.js"></script>  <!-- API handling -->
+    <script src="../scripts/planner.js"></script>  <!-- Planner functionality -->
+</body>
+</html> 

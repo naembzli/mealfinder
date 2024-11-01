@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MealFinder - Discover Delicious Recipes</title>
+    <!-- External CSS and Font imports -->
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav>
+      <div class="nav-brand">
+          <i class="fas fa-utensils"></i>
+          <span>MealFinder</span>
+      </div>
+      <!-- Main Navigation Links -->
+      <ul>
+          <li><a href="index.html"><i class="fas fa-search"></i> Discover</a></li>
+          <li><a href="planner.html"><i class="fas fa-calendar-alt"></i> Meal Planner</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section with Main Title -->
+    <header class="hero">
+      <h1>Discover Delicious Recipes</h1>
+      <p>Find your perfect meal with our extensive collection of recipes</p>
+    </header>
+
+    <main>
+      <!-- Search Section -->
+      <div class="search-container">
+        <div class="search-box">
+          <i class="fas fa-search search-icon"></i>
+          <!-- Search Input Field -->
+          <input type="text" id="searchInput" placeholder="Search for meals..." />
+          <!-- Search Type Selector -->
+          <select id="searchType">
+            <option value="name">By Name</option>
+            <option value="ingredient">By Ingredient</option>
+            <option value="category">By Category</option>
+          </select>
+          <!-- Search and Random Meal Buttons -->
+          <button onclick="searchMeals()">Search</button>
+          <button onclick="getRandomMeal()" class="random-button">
+            <i class="fas fa-dice"></i> Random Meal
+          </button>
+        </div>
+      </div>
+
+      <!-- Search Results Container -->
+      <div id="results" class="meals-grid"></div>
+    </main>
+
+    <!-- Modal for Displaying Meal Details -->
+    <div id="mealModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="mealDetails"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="../scripts/api.js"></script>  <!-- API handling -->
+    <script src="../scripts/main.js"></script> <!-- Main functionality -->
+  </body>
+</html>

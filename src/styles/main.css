@@ -1,0 +1,881 @@
+:root {
+    --primary-color: #ff6b6b;
+    --secondary-color: #4ecdc4;
+    --accent-color: #ffe66d;
+    --text-color: #2d3436;
+    --background-color: #f9f7f7;
+    --card-background: #ffffff;
+    --nav-background: #2d3436;
+    --border-radius: 12px;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Navigation */
+nav {
+    background-color: var(--nav-background);
+    padding: 1rem 2rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+nav a:hover, nav a.active {
+    background-color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('../assets/hero-bg.jpg') center/cover;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Search Container */
+.search-container {
+    max-width: 800px;
+    margin: -2rem auto 2rem;
+    padding: 0 1rem;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: white;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 800px;
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    outline: none;
+}
+
+.search-box select {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    outline: none;
+}
+
+.search-box button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.search-box .random-button {
+    background-color: var(--secondary-color);
+}
+
+.search-box button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Results Grid */
+.meals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.meal-card {
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.meal-card:hover {
+    transform: translateY(-5px);
+}
+
+.meal-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.meal-card-content {
+    padding: 1.5rem;
+}
+
+.meal-card-content h3 {
+    margin-bottom: 0.5rem;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--card-background);
+    margin: 5% auto;
+    padding: 2rem;
+    width: 90%;
+    max-width: 800px;
+    border-radius: var(--border-radius);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close {
+    float: right;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Meal Details Modal Styles */
+.meal-details-container {
+    padding: 1rem;
+}
+
+.meal-header {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.meal-image {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.meal-image img {
+    width: 300px;
+    height: 300px;
+    border-radius: var(--border-radius);
+    object-fit: cover;
+}
+
+.meal-badges {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    color: white;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.badge.category {
+    background-color: var(--primary-color);
+}
+
+.badge.area {
+    background-color: var(--secondary-color);
+}
+
+.meal-info {
+    flex: 1;
+}
+
+.meal-info h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.youtube-btn {
+    background-color: #ff0000;
+    color: white;
+    text-decoration: none;
+}
+
+.save-btn {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.remove-btn {
+    background-color: #ff4757;
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.meal-content {
+    margin-top: 2rem;
+}
+
+.ingredients-section,
+.instructions-section {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+}
+
+.ingredients-section h3,
+.instructions-section h3 {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-color);
+}
+
+.ingredients-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.ingredient-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--secondary-color);
+}
+
+/* Alternating colors for ingredients */
+.ingredient-item:nth-child(odd) {
+    background: white;
+    border-left-color: var(--secondary-color);
+}
+
+.ingredient-item:nth-child(even) {
+    background: #f8f9fa;
+    border-left-color: var(--primary-color);
+}
+
+.ingredient-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.ingredient-item .measure {
+    min-width: 100px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 0.5rem;
+    background: rgba(78, 205, 196, 0.1);
+    border-radius: var(--border-radius);
+    margin-right: 1rem;
+    text-align: center;
+}
+
+.ingredient-item .ingredient {
+    flex: 1;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.ingredient-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+/* Update button styles within ingredient items */
+.ingredient-item .btn {
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+}
+
+.ingredient-item .edit-btn {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+.ingredient-item .remove-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.ingredient-item .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Planner Modal Styles */
+.planner-modal .modal-content {
+    max-width: 500px;
+}
+
+.planner-form {
+    margin-top: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+/* Video Section Styles */
+.video-section {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-top: 2rem;
+}
+
+.video-section h3 {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-color);
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Update modal styles to accommodate video */
+.modal-content {
+    max-width: 900px; /* Increased to better accommodate the video */
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Add these styles */
+.ingredients-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.ingredient-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    background: var(--bg-secondary);
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.ingredient-item .measure {
+    min-width: 80px;
+    margin-right: 1rem;
+    font-weight: 500;
+}
+
+.ingredient-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 0.5rem;
+    opacity: 1;
+}
+
+.ingredient-item.new-ingredient {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 0.8rem;
+    background-color: #f8f9fa;
+}
+
+.measure-input, .ingredient-input {
+    padding: 0.6rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+}
+
+.btn {
+    padding: 0.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.edit-btn {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+.remove-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.save-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.add-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.6rem 1rem;
+    font-weight: 500;
+}
+
+/* Add these styles for the add ingredient modal */
+.add-ingredient-modal {
+    max-width: 500px !important;
+    margin: 5% auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.modal-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.save-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+}
+
+.cancel-btn {
+    background-color: #6c757d;
+    color: white;
+    padding: 0.8rem 1.5rem;
+}
+
+.btn i {
+    margin-right: 0.5rem;
+}
+
+/* Update existing button styles */
+.add-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.edit-btn {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+.remove-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Add styles for editing state */
+.ingredient-item.editing {
+    background-color: #f8f9fa;
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.ingredient-item.editing input {
+    padding: 0.6rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+}
+
+.ingredient-item.editing .ingredient-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.ingredient-item.editing .save-btn {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.ingredient-item.editing .remove-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Add these styles for the edit ingredient modal */
+.edit-ingredient-modal {
+    max-width: 500px !important;
+    margin: 5% auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.modal-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.modal-body {
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(78, 205, 196, 0.1);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.save-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+}
+
+.cancel-btn {
+    background-color: #6c757d;
+    color: white;
+    padding: 0.8rem 1.5rem;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.btn i {
+    font-size: 0.9rem;
+}
+
+/* Add styles for the overlay modal */
+.overlay-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.overlay-content {
+    background: white;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    animation: slideIn 0.3s ease;
+}
+
+.overlay-content .modal-header {
+    padding: 1.2rem;
+    border-bottom: 1px solid #ddd;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.overlay-content .modal-body {
+    padding: 1.5rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Update existing modal styles */
+.modal-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(78, 205, 196, 0.1);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Button styles */
+.save-btn, .cancel-btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.save-btn {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.save-btn:hover, .cancel-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
